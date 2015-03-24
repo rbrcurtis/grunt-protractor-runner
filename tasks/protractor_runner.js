@@ -61,8 +61,6 @@ module.exports = function(grunt) {
     for (var i = 0 ; i<toAdd.length ; i++ ){
       args.push(toAdd[i]);
     }
-    console.log('arging the args', args);
-
     // Iterate over all supported arguments.
     strArgs.forEach(function(a) {
       if (a in opts.args || grunt.option(a)) {
