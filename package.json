@@ -29,6 +29,7 @@
     "test": "node test/runtest.js"
   },
   "dependencies": {
+    "optimist": "^0.6.1",
     "protractor": "^1.0.0",
     "split": "~0.3.0",
     "through2": "~0.5.1"

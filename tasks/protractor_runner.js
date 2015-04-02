@@ -13,6 +13,7 @@ var path = require('path');
 var fs = require('fs');
 var split = require('split');
 var through2 = require('through2');
+var optimist = require('optimist');
 
 module.exports = function(grunt) {
 
@@ -57,10 +58,13 @@ module.exports = function(grunt) {
       args.splice(1,0,'debug');
     }
 
-    var toAdd = process.argv.slice(3);
-    for (var i = 0 ; i<toAdd.length ; i++ ){
-      args.push(toAdd[i]);
+    for (var key in optimist.argv) {
+      // key = String(key);
+      var val = optimist.argv[key];
+      if (key === '_' || key === '$0')continue;
+      args.push('--'+key, val);
     }
+
     // Iterate over all supported arguments.
     strArgs.forEach(function(a) {
       if (a in opts.args || grunt.option(a)) {
