@@ -84,7 +84,7 @@ If true, grunt will pass 'debug' as second argument to protractor CLI to enable 
 Type: `Object`
 Default value: `{}`
 
-Arguments passed to the command. These arguments can also be supplied via command-line too. Ex.`grunt protractor --specs=specs/some-test.js`
+Arguments passed to the command. These arguments can also be supplied via command-line too. Ex.`grunt protractor --specs=specs/some-test.js`  or for object options `grunt protractor --cucumberOpts={\"tags\":\"@quick\"}`
 Supported arguments are below.
 
 * seleniumAddress `string`: A running selenium address to use
@@ -121,7 +121,13 @@ The file that the task should output the results to.
 Type: `String`
 Default value: `node`
 
-Path to the node binary file. Useful if node is not on the PATH. 
+Path to the node binary file. Useful if node is not on the PATH.
+
+#### options.webdriverManagerUpdate
+Type: `Boolean`
+Default value: `false`
+
+If true, `webdriver-manager update` will run and install/update selenium driver.
 
 ## Tests
 
@@ -129,6 +135,7 @@ Run `npm install` to install dependencies.
 
 Then run `grunt` or `npm test` to test the module. You will encounter these.
 
+* Runs unit and e2e tests
 * It opens chrome a couple of times without warnings or errors.
 * A test task fails but the test process keeps alive and continues to the next test tasks.
 
@@ -156,6 +163,9 @@ You need to install/update selenium webdriver for protractor.
 
 ## Release History
 
+* 2.1.0
+  * Add `options.webdriverManagerUpdate` option (#125)
+  * Fix support for object option via command-line (#116)
 * 2.0.0
   * Upgrade `protractor` to `^2.0.0` (#114)
   * `chromeOnly` in `options.args` is deprecated. Replaced by `directConnect` (#114)
